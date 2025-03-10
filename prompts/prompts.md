@@ -90,3 +90,73 @@ To install the dependencies, navigate to the frontend directory and run:
 
 **npm install**
 ```
+
+```README.md create file tree structure for this project````
+```
+Based on the requirements and bounded contexts from the README.md, here's a recommended file tree structure for the LTI-ATS project:
+
+
+lti-ats/
+├── backend/
+│   ├── src/
+│   │   ├── domain/
+│   │   │   ├── jobs/
+│   │   │   ├── candidates/
+│   │   │   ├── recruitment/
+│   │   │   ├── communications/
+│   │   │   ├── analytics/
+│   │   │   └── security/
+│   │   ├── application/
+│   │   │   ├── services/
+│   │   │   └── interfaces/
+│   │   ├── infrastructure/
+│   │   │   ├── persistence/
+│   │   │   ├── repositories/
+│   │   │   └── external_services/
+│   │   ├── api/
+│   │   │   └── v1/
+│   │   └── tests/
+│   ├── requirements.txt
+│   ├── pyproject.toml
+│   └── pytest.ini
+├── frontend/
+│   ├── src/
+│   │   ├── app/
+│   │   │   ├── jobs/
+│   │   │   ├── candidates/
+│   │   │   ├── recruitment/
+│   │   │   ├── communications/
+│   │   │   ├── analytics/
+│   │   │   └── settings/
+│   │   ├── components/
+│   │   │   ├── common/
+│   │   │   └── layouts/
+│   │   ├── hooks/
+│   │   ├── services/
+│   │   ├── types/
+│   │   └── utils/
+│   ├── package.json
+│   ├── tsconfig.json
+│   └── jest.config.js
+├── docker/
+│   ├── backend/
+│   │   └── Dockerfile
+│   ├── frontend/
+│   │   └── Dockerfile
+│   └── postgres/
+│       └── init.sql
+├── docker-compose.yml
+├── .env
+├── .gitignore
+└── README.md
+
+The structure follows hexagonal architecture principles and DDD, with clear separation between domain, application, and infrastructure layers in the backend. The frontend follows Next.js best practices with feature-based organization.
+
+Would you like me to explain any specific part of this structure in more detail?
+```
+----
+```Give me de code snippets for package.json, tsconfig.json and jest.config.js```
+```
+I'll provide you with the configuration files for the frontend Next.js application.
+```
+
