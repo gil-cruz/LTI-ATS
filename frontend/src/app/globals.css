@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --foreground-rgb: 255, 255, 255;
+    --background-rgb: 0, 0, 0;
+    --primary: 139, 92, 246; /* Purple */
+    --primary-dark: 124, 58, 237; /* Darker Purple */
+    --gradient-start: 139, 92, 246; /* Purple */
+    --gradient-end: 124, 58, 237; /* Darker Purple */
+}
+
+body {
+    color: rgb(var(--foreground-rgb));
+    background: rgb(var(--background-rgb));
+    font-family: 'Inter', sans-serif;
+}
+
+@layer components {
+    .btn-primary {
+        @apply px-4 py-2 bg-purple-600 text-white rounded-md hover:bg-purple-700 transition-colors duration-200 ease-in-out;
+    }
+
+    .btn-secondary {
+        @apply px-4 py-2 bg-white text-purple-600 border border-purple-600 rounded-md hover:bg-purple-50 transition-colors duration-200 ease-in-out;
+    }
+
+    .card {
+        @apply bg-gray-800 rounded-lg shadow-md p-6;
+    }
+
+    .input {
+        @apply w-full px-3 py-2 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 bg-gray-900 text-white;
+    }
+}

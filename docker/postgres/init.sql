@@ -1,0 +1,54 @@
+
+-- Connect as superuser
+\c postgres postgres
+
+-- Create application user and database
+CREATE USER ats_user WITH PASSWORD 'ats_password';
+CREATE DATABASE ats_db WITH OWNER ats_user ENCODING 'UTF8' LC_COLLATE='en_US.UTF-8' LC_CTYPE='en_US.UTF-8' TEMPLATE template0;
+GRANT ALL PRIVILEGES ON DATABASE ats_db TO ats_user;
+
+-- Connect to the new database
+\c ats_db
+
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+
+-- Create users table
+CREATE TABLE users (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    email VARCHAR(255) UNIQUE NOT NULL,
+    hashed_password VARCHAR(255) NOT NULL,
+    full_name VARCHAR(255),
+    is_active BOOLEAN DEFAULT true,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Create roles table
+CREATE TABLE roles (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    name VARCHAR(50) UNIQUE NOT NULL,
+    description TEXT
+);
+
+-- Create user_roles table
+CREATE TABLE user_roles (
+    user_id UUID REFERENCES users(id),
+    role_id UUID REFERENCES roles(id),
+    PRIMARY KEY (user_id, role_id)
+);
+
+-- Grant privileges on all tables
+GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO ats_user;
+GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA public TO ats_user;
+ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT ALL ON TABLES TO ats_user;
+ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT ALL ON SEQUENCES TO ats_user;
+-- GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO ${ATS_USER};
+-- GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA public TO ${ATS_USER};
+-- GRANT ALL PRIVILEGES ON ALL FUNCTIONS IN SCHEMA public TO ${ATS_USER};
+-- GRANT ALL PRIVILEGES ON ALL TYPES IN SCHEMA public TO ${ATS_USER};
+-- GRANT ALL PRIVILEGES ON ALL SCHEMAS IN SCHEMA public TO ${ATS_USER};
+-- GRANT ALL PRIVILEGES ON ALL DATABASES TO ${ATS_USER};
+-- GRANT ALL PRIVILEGES ON ALL TABLES TO ${ATS_USER};
+-- GRANT ALL PRIVILEGES ON ALL SEQUENCES TO ${ATS_USER};
+-- GRANT ALL PRIVILEGES ON ALL FUNCTIONS TO ${ATS_USER};
+-- GRANT ALL PRIVILEGES ON ALL TYPES TO ${ATS_USER};
+-- GRANT ALL PRIVILEGES ON ALL SCHEMAS TO ${ATS_USER};

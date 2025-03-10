@@ -1,0 +1,70 @@
+# Dependencies
+node_modules/
+.pnp/
+.pnp.js
+
+# Testing
+coverage/
+.pytest_cache/
+__pycache__/
+*.pyc
+
+# Next.js
+.next/
+out/
+
+# Production
+build/
+dist/
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Python virtual environment
+venv/
+.venv/
+env/
+.Python
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.log
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+
+# Database
+*.sqlite3
+postgres_data/
+
+# Docker
+docker-compose.override.yml
+
+# Temp files
+*.tmp
+*.temp
+.cache/
+
+# Backend specific
+*.pyc
+*.pyo
+*.pyd
+.Python
+pip-log.txt
+*.egg
+*.egg-info/
+
+# Frontend specific
+.vercel
+.env*.local
+*.tsbuildinfo
