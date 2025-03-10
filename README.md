@@ -24,152 +24,67 @@ Access the application:
 - API Documentation: http://localhost:8000/docs
 
 
+## Architecture
 
-## Bounded Contexts
+This project follows Hexagonal Architecture and Domain-Driven Design (DDD) principles:
 
-### 1. Gestión de Vacantes (Job Management)
-- Publicación y gestión de ofertas laborales
-- Integración con bolsas de trabajo
-- Gestión de requisitos y descripciones de puesto
-- Configuración de flujos de reclutamiento
+### Bounded Contexts
 
-### 2. Gestión de Candidatos (Candidate Management)
-- Perfiles de candidatos
-- Gestión de CV y documentos
-- Historial de aplicaciones
-- Base de talento
+1. **Job Management**
+   - Job posting and management
+   - Job board integrations
+   - Requirements and job descriptions
+   - Recruitment workflow configuration
+2. **Candidate Management**
+   - Candidate profiles
+   - CV and document management
+   - Application history
+   - Talent pool
 
-### 3. Proceso de Selección (Recruitment Process)
-- Seguimiento de etapas de selección
-- Gestión de entrevistas
-- Evaluaciones técnicas
-- Decisiones de contratación
+3. **Recruitment Process**
+   - Selection stage tracking
+   - Interview management
+   - Technical assessments
+   - Hiring decisions
 
-### 4. Comunicaciones (Communications)
-- Notificaciones automáticas
-- Programación de entrevistas
-- Plantillas de correo
-- Seguimiento de comunicaciones
+4. **Communications**
+   - Automated notifications
+   - Interview scheduling
+   - Email templates
+   - Communication tracking
 
-### 5. Analytics y Reportes (Analytics & Reporting)
-- Métricas de reclutamiento
-- Análisis de fuentes de candidatos
-- Tiempos de contratación
-- Reportes personalizados
+5. **Analytics & Reporting**
+   - Recruitment metrics
+   - Source analysis
+   - Hiring timelines
+   - Custom reports
 
-### 6. Gestión de Usuarios y Seguridad (User & Security Management)
-- Autenticación y autorización
-- Roles y permisos
-- Auditoría de acciones
-- Configuración de empresa
+6. **User & Security Management**
+   - Authentication & authorization
+   - Roles and permissions
+   - Action auditing
+   - Company settings
 
-## Funcionalidad:
-Permite centralizar la información de los candidatos, automatizar tareas, rastrear el progreso de las candidaturas y facilitar la comunicación con los solicitantes.
+## Tech Stack
 
-## Beneficios:
-
-**Ahorro de tiempo:** Automatiza tareas repetitivas y agiliza el proceso de reclutamiento.
-**Mejor organización:** Centraliza la información de los candidatos y permite un seguimiento más eficiente.
-**Reducción de costos:** Optimiza el proceso de reclutamiento y reduce la necesidad de recursos humanos.
-**Mejor toma de decisiones:** Permite analizar datos y tomar decisiones más informadas sobre la selección de personal.
-
-**Ejemplos de funcionalidades:**
-
-* Publicación de ofertas de empleo en múltiples plataformas.
-* Búsqueda y selección de candidatos.
-* Gestión de candidaturas y seguimiento del proceso de selección.
-* Comunicación con los candidatos.
-* Generación de informes y análisis de datos.
-
-
+- **Frontend**: Next.js 14, TypeScript, TailwindCSS
+- **Backend**: FastAPI, Python 3.11+
+- **Database**: PostgreSQL 15
+- **Infrastructure**: Docker, Docker Compose
 
 ## Project Structure
 
-lti-ats/
-├── backend/
-│   ├── src/
-│   │   ├── __init__.py
-│   │   ├── main.py
-│   │   ├── domain/
-│   │   │   ├── jobs/
-│   │   │   ├── candidates/
-│   │   │   ├── recruitment/
-│   │   │   ├── communications/
-│   │   │   ├── analytics/
-│   │   │   └── security/
-│   │   ├── application/
-│   │   │   ├── services/
-│   │   │   └── interfaces/
-│   │   ├── infrastructure/
-│   │   │   ├── persistence/
-│   │   │   ├── repositories/
-│   │   │   └── external_services/
-│   │   ├── api/
-│   │   │   └── __init__.py
-│   │   │   └── v1/
-│   |   |     ├── __init__.py
-│   |   |     ├── routes.py
-│   |   |     └── endpoints/
-│   |   |         ├── __init__.py
-│   |   |         └── recruitment.py
-│   │   └── tests/
-│   ├── requirements.txt
-│   ├── pyproject.toml
-│   └── pytest.ini
-├── frontend/
-│   ├── src/
-│   │   ├── app/                   # Next.js 13+ App Router directory
-│   │   │   ├── layout.tsx        # Root layout
-│   │   │   ├── page.tsx          # Home page (/)
-│   │   │   ├── globals.css       # Global styles
-│   │   │   ├── jobs/            # Jobs feature
-│   │   │   │   ├── page.tsx     # Jobs listing page (/jobs)
-│   │   │   │   └── [id]/        # Dynamic job routes
-│   │   │   │       └── page.tsx # Single job page (/jobs/[id])
-│   │   │   ├── candidates/      # Candidates feature
-│   │   │   │   └── page.tsx     # Candidates page (/candidates)
-│   │   │   ├── recruitment/     # Recruitment feature
-│   │   │   │   └── page.tsx     # Recruitment page (/recruitment)
-│   │   │   ├── communications/  # Communications feature
-│   │   │   │   └── page.tsx     # Communications page (/communications)
-│   │   │   ├── analytics/       # Analytics feature
-│   │   │   │   └── page.tsx     # Analytics page (/analytics)
-│   │   │   └── settings/        # Settings feature
-│   │   │       └── page.tsx     # Settings page (/settings)
-│   │   ├── components/          # Shared components
-│   │   │   ├── common/          # Common UI components
-│   │   │   └── layouts/         # Layout components
-│   │   │       └── Navbar.tsx   # Navigation component
-│   │   ├── hooks/              # Custom React hooks
-│   │   ├── services/           # API services
-│   │   ├── types/             # TypeScript types/interfaces
-│   │   └── utils/             # Utility functions
-│   ├── package.json
-│   ├── tailwind.config.js
-│   ├── postcss.config.js
-│   ├── tsconfig.json
-│   └── jest.config.js
-├── docker/
-│   ├── backend/
-│   │   └── Dockerfile
-│   ├── frontend/
-│   │   └── Dockerfile
-│   └── postgres/
-│       └── init.sql
-├── docker-compose.yml
-├── .env
-├── .gitignore
-└── README.md
+See [STRUCTURE.md](./docs/STRUCTURE.md) for detailed project organization.
+
+## Contributing
+
+See [CONTRIBUTING.md](./CONTRIBUTING.md) for contribution guidelines.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 
-The structure follows hexagonal architecture principles and DDD, with clear separation between domain, application, and infrastructure layers in the backend. The frontend follows Next.js best practices with feature-based organization.
 
 
-### Frontend conventions: 
 
-* All pages live under src/app directory
-* Each route has its own directory with a page.tsx file
-* Layout components are placed in app/layout.tsx for root layout
-* Global styles are in app/globals.css
-* Reusable components go in components directory
-* Each feature (jobs, candidates, etc.) has its own directory under app
